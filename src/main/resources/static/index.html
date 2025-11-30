@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YourCarYourWay | Live Support</title>
+    <!-- Police Google Fonts moderne -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Icônes Phosphor -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <!-- Arrière-plan dynamique -->
+    <div class="background-glow"></div>
+
+    <!-- ÉCRAN DE CONNEXION -->
+    <div id="login-screen" class="screen active">
+      <div class="login-card">
+        <div class="brand-logo">
+          <i class="ph-fill ph-car-profile"></i>
+          <span>YCYW Support</span>
+        </div>
+        <h2>Bienvenue à bord</h2>
+        <p>Identifiez-vous pour contacter un agent.</p>
+
+        <form id="loginForm">
+          <div class="input-wrapper">
+            <i class="ph ph-user"></i>
+            <input
+              type="text"
+              id="username-input"
+              placeholder="Votre identifiant..."
+              autocomplete="off"
+              required
+            />
+          </div>
+          <button type="submit" class="btn-primary">
+            Commencer la session <i class="ph-bold ph-arrow-right"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- INTERFACE DE CHAT -->
+    <div id="chat-screen" class="screen hidden">
+      <!-- Sidebar (Menu Gauche Élargi) -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <i class="ph-fill ph-circles-four"></i>
+          <span>YCYW</span>
+        </div>
+
+        <div class="sidebar-content">
+          <div class="active-users-panel">
+            <small>STATUT LIVE</small>
+            <div class="status-indicator online">
+              <span class="pulse"></span> Connecté
+            </div>
+          </div>
+
+          <div class="info-box">
+            <i class="ph-duotone ph-info"></i>
+            <p>Temps d'attente estimé : <br /><strong>< 2 minutes</strong></p>
+          </div>
+        </div>
+
+        <button id="logout-btn" class="btn-logout" title="Déconnexion">
+          <i class="ph-bold ph-sign-out"></i>
+          <span>Déconnexion</span>
+        </button>
+      </aside>
+
+      <!-- Zone Principale -->
+      <main class="chat-main">
+        <!-- Header du chat -->
+        <header class="chat-header">
+          <div class="header-info">
+            <h3>Support Clientèle</h3>
+            <span class="badge">En ligne</span>
+          </div>
+          <div class="header-actions">
+            <button class="btn-icon-only"><i class="ph ph-phone"></i></button>
+            <button class="btn-icon-only">
+              <i class="ph ph-video-camera"></i>
+            </button>
+          </div>
+        </header>
+
+        <!-- Zone des messages -->
+        <div id="message-area" class="message-container">
+          <div class="system-message">
+            <span>La session a démarré. Tout échange est sécurisé.</span>
+          </div>
+          <!-- Les messages apparaissent ici -->
+        </div>
+
+        <!-- Zone de saisie -->
+        <footer class="chat-footer">
+          <!-- Réponses rapides -->
+          <div class="quick-replies">
+            <button
+              class="chip"
+              onclick="fillInput('👋 Bonjour, j\'ai une question.')"
+            >
+              👋 Bonjour
+            </button>
+            <button
+              class="chip"
+              onclick="fillInput('🚗 Je voudrais louer une voiture.')"
+            >
+              🚗 Location
+            </button>
+            <button class="chip" onclick="fillInput('💳 Quel est le tarif ?')">
+              💳 Tarif
+            </button>
+          </div>
+
+          <form id="messageForm" class="input-area">
+            <button type="button" class="btn-attach">
+              <i class="ph ph-paperclip"></i>
+            </button>
+            <input
+              type="text"
+              id="message-input"
+              placeholder="Écrivez votre message..."
+              autocomplete="off"
+            />
+            <button type="submit" class="btn-send">
+              <i class="ph-fill ph-paper-plane-right"></i>
+            </button>
+          </form>
+        </footer>
+      </main>
+    </div>
+
+    <!-- Dépendances (SockJS & Stomp) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
